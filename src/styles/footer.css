@@ -1,0 +1,12 @@
+.foot{
+    background-color:#292929;
+    height: 23rem;
+}
+
+
+@media (max-width: 768px){
+   .foot{
+    height: 50rem;
+   }
+ 
+ }

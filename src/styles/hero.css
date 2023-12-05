@@ -1,0 +1,37 @@
+.dash{
+    background-image:url('../assets/background.svg') ;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 40rem;
+}
+.space{
+    padding-top: 10rem;
+}
+.line{
+    line-height: 35px;
+    size: 20px;
+    font-weight: 400;
+    letter-spacing: 2%;
+    width: 40rem;
+}
+.long{
+    height: 20rem;
+}
+.mark{
+    background-image: url('../assets/background2.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-top: 20rem;
+    height: 15rem;
+}
+
+@media (max-width: 768px){
+    
+   .line{
+    width: auto;
+   }
+   .nap{
+    text-align: center;
+   }
+
+}

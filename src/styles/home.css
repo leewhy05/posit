@@ -1,0 +1,14 @@
+.noe{
+    background-color: #f5f6f8;
+    height: 35rem;
+}
+
+
+
+@media (max-width: 768px){
+    
+    .nap{
+      text-align: center;
+    }
+ 
+ }

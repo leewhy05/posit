@@ -1,0 +1,24 @@
+.body{
+    background-image: url('../assets/Section.svg');
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 750px;
+}
+.bod{
+    background-image: url('../assets/Section.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 750px;
+}
+form{
+    filter: brightness(100%);
+}
+
+@media (max-width: 768px){
+    
+   .body, .bod{
+    height: 660px;
+   }
+ 
+ }
