@@ -7,7 +7,7 @@ const Home = () => {
   const [error, setError] = useState(false);
   const getData = async () => {
     try {
-      const fetcher = await fetch("https://posit-ptta.onrender.com/allposts");
+      const fetcher = await fetch("https://posit-ptta.onrender.com/api/allposts");
       const res = await fetcher.json();
       console.log(res.allPosts);
       setData(res.allPosts);
@@ -43,7 +43,7 @@ const Home = () => {
                   <span>story:</span> {description}
                 </h4>
                 <h2> {tags} </h2>
-                <p>created by: {datum.createdBy.name} </p>
+                {/* <p>created by: {datum.createdBy.name} </p> */}
               </div>
             );
           })
