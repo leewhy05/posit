@@ -1,65 +1,86 @@
-import React from "react";
-import "../styles/sign.css";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import Modal from "react-bootstrap/Modal";
-import Logo from "../assets/Postit 1.svg";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import toast from 'react-hot-toast';
+
+
 
 const SignUp = () => {
+  const [email,setEmail] = useState('')
+  const [name,setName] = useState('')
+  const [password,setpassword] = useState('')
+  const navigate = useNavigate()
+
+ async function Register(e){
+  e.preventDefault()
+  try {
+    const regData = {
+      email,
+      name,
+      password,
+    }
+
+ 
+  const res = await fetch('https://posit-ptta.onrender.com/api/register', {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(regData),
+      });
+      const data = await res.json();
+      console.log(data);
+      if(data.msg === 'registration successful'){
+        toast.success(data.msg)
+
+        navigate('/SignIn')
+      }
+      if(data.msg === 'all fields are required to register' || data.errors.password === 'password min length must be 8'|| data.errors.email === "Please provide a valid email" || data.errors.email === "Email address already in use"|| data.errors.name === "min length for username is 4"){
+        toast.error(data.msg || data.errors.password || data.errors.email || data.errors.name)
+      }
+
+  } catch (errors) {
+    if(errors){
+      // alert(errors.errors)
+      return
+    }
+    console.log(errors);
+    
+  }
+  
+
+  }
+
+
+
   return (
-    <div className="bod">
-      <Form>
-        <div className="container">
-          <div className="d-flex pt-4 gap-2 align-items-center justify-content-center text-center move">
-            <h2 className="text-center pt-2">Join </h2>
-            <img src={Logo} alt="Logo" className="" />
-          </div>
-
-          <div className="text-center pt-5  ">
-            <h3 className="fs-5 d-flex justify-content-center gap-2 ">
-              Enter your email address to create account on
-              <img src={Logo} alt="" className="logo" />
-            </h3>
-          </div>
-        </div>
-
-        <div className="container mt-5">
-          <Form.Group className="mb-3" controlId="Form.ControlInput1">
-            <h4 className="text-center">Username</h4>
-            <Form.Control type="name" placeholder="username" autoFocus className="" />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <h4 className="text-center">Your Email Address</h4>
-            <Form.Control
-              type="email"
-              placeholder="name@example.com"
-              autoFocus
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="password.ControlInput1">
-            <h4 className="text-center mt-4">Your Password</h4>
-            <Form.Control type="password" placeholder="password" autoFocus />
-          </Form.Group>
-          <button
-            className="btn btn text-light fs-5 w-100"
-            style={{ backgroundColor: "#0086B0" }}
-          >
-            Sign Up
-          </button>
-        </div>
-
-        <div className="mt-3 fw-bold">
-          <p className="text-center">
-            Already have an account?{" "}
-            <span>
-              <Link to="/SignIn">Sign In</Link>
-            </span>
-          </p>
-        </div>
-      </Form>
+   <div className="">
+     <div className="container mt-5">
+      <h2 className="text-center">Register with <span style={{color:'#0086B0'}}>POSIT</span></h2>
+      <form className="w-50 m-auto mt-5" >
+        <label htmlFor="name">Username:</label><br />
+        <input onChange={(e)=> setName(e.target.value)}  value={name} className="w-100 border border-2 border-success"  type="text" name="" id="firstname" /><br /><br />
+        <label htmlFor="email">Email:</label><br />
+        <input onChange={(e)=> setEmail(e.target.value) } value={email} className="w-100  border border-2 border-success" type="email" name="" id="email" /><br /><br />
+        <label htmlFor="name">Password:</label><br />
+        <input onChange={(e)=> setpassword(e.target.value) }  value={password} className="w-100  border border-2 border-success"  type="password" name="" id="password" /><br /><br />
+       <div className="d-flex justify-content-center">
+       <input className="btn btn-primary w-50 " type="submit" value="Register" onClick={Register}/>
+       
+       </div>
+       <div className="mt-3 fw-bold">
+        <p className="text-center">
+          already have an Account?
+          <span>
+            <Link to="/SignIn">Sign In</Link>
+          </span>
+        </p>
+      </div>
+      </form>
+       
     </div>
+
+   </div>
   );
 };
 
-export default SignUp;
+export default SignUp

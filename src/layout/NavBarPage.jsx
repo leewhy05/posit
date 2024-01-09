@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavLogo from "../assets/Postit 1.svg";
 import EYE from "../assets/Ellipse 1.svg";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet,useNavigate } from "react-router-dom";
+import PostContext from "../context/PostContext";
 
 const NavBarPage = () => {
+  const navigate = useNavigate()
+  const {loggedIn,setLoggedIn} = useContext(PostContext);
+  console.log(loggedIn);
+
+  const logout = ()=>{
+    localStorage.removeItem('token')
+    setLoggedIn(false)
+    navigate('/')
+    
+    
+  }
+
+
+
   return (
     <div className="bg-light">
       <div className="container mt-3">
@@ -44,6 +59,11 @@ const NavBarPage = () => {
                     <h4>Contact</h4>
                   </Link>
                 </li>
+                {loggedIn ? <div className="d-flex w-25 gap-3"> <button className="btn btn-primary" onClick={logout}>logout</button>  <div>  <li className="list-unstyled">
+                  <Link className="text-decoration-none text-dark d-none d-lg-block scale">
+                    <img src={EYE} alt={EYE} />
+                  </Link>
+                </li></div> </div> : <> 
 
                 <li className="list-unstyled">
                   <Link
@@ -66,11 +86,12 @@ const NavBarPage = () => {
                     </Link>
                   </button>
                 </li>
-                <li className="list-unstyled">
-                  <Link className="text-decoration-none text-dark d-none d-lg-block scale">
-                    <img src={EYE} alt={EYE} />
-                  </Link>
-                </li>
+                
+                
+                 </>}
+
+            
+              
               </ul>
             </Navbar.Collapse>
           </Container>

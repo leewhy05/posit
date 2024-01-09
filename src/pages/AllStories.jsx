@@ -1,6 +1,7 @@
 import React from 'react'
 import HomeTwo from './HomeTwo'
 import Group from '../assets/Group350.svg'
+import MapHero from '../component/MapHero'
 
 const AllStories = () => {
   return (
@@ -9,7 +10,7 @@ const AllStories = () => {
         <HomeTwo/>
       </div>
       <div className='container' >
-      <img src={Group} alt="" />
+      <MapHero/>
       </div>
     </div>
   )

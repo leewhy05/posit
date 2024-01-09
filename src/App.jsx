@@ -10,6 +10,9 @@ import AllStories from './pages/AllStories'
 import HomeTwo from './pages/HomeTwo'
 import CreateStory from './pages/CreateStory'
 import EditStory from './pages/EditStory'
+import  { Toaster } from 'react-hot-toast';
+import MapHero from './component/MapHero'
+
 
 function App() {
 
@@ -26,6 +29,7 @@ function App() {
     <Route path='/AllStories' element={<AllStories/>}/>
     <Route path='/CreateStory' element={<CreateStory/>}/>
     <Route path='/EditStory' element={<EditStory/>}/>
+    <Route path='/MapHero/:userId' element={<MapHero/>}/>
  
 
 </Route>
@@ -33,6 +37,8 @@ function App() {
 <Route path='/SignUp'  element={<SignUp/>}/>
 </Routes>
 </BrowserRouter>
+<Toaster />
+
     
     </>
   )
