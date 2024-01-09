@@ -7,7 +7,7 @@ export const PostProvider = ({children}) => {
   const token = localStorage.getItem("token");
 
   async function getLoggedIn() {
-    const res = await fetch("http://localhost:8000/api/isLoggedIn", {
+    const res = await fetch("https://posit-ptta.onrender.com/api/isLoggedIn", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -15,7 +15,6 @@ export const PostProvider = ({children}) => {
     });
     const data = await res.json();
     console.log(data);
-    console.log();
     setLoggedIn(data);
   }
 

@@ -7,7 +7,7 @@ const Home = () => {
   const [error, setError] = useState(false);
   const getData = async () => {
     try {
-      const fetcher = await fetch("https://posit-ptta.onrender.com/api/allposts");
+      const fetcher = await fetch("https://posit-ptta.onrender.com/allposts");
       const res = await fetcher.json();
       console.log(res.allPosts);
       setData(res.allPosts);

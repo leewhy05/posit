@@ -23,7 +23,7 @@ const SignIn = () => {
     };
 
     try {
-      const res = await fetch("http://localhost:8000/api/login", {
+      const res = await fetch("https://posit-ptta.onrender.com/api/login", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -54,6 +54,7 @@ const SignIn = () => {
   }
   return (
     <div className="pt-5 body">
+      <div className="container w-50">
       <div className="text-center pt-5">
         <h1 className="text-center">Welcome Back</h1>
       </div>
@@ -66,6 +67,7 @@ const SignIn = () => {
             >
               <h4 className="text-center">Your Email Address</h4>
               <Form.Control
+              className=""
                 type="email"
                 placeholder="name@example.com"
                 autoFocus
@@ -100,6 +102,7 @@ const SignIn = () => {
             <Link to="/SignUp">Sign Up</Link>
           </span>
         </p>
+      </div>
       </div>
     </div>
   );
