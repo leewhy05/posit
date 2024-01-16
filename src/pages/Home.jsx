@@ -27,10 +27,11 @@ const Home = () => {
        <div>
        <Hero/>
        </div>
-        <div className='container'>
-    <div className="row justify-content-between align-items-center gap-5 my-4 ">
+       <div className="container">
+      <div className="row justify-content-between align-items-center gap-5 my-4 ">
         {error && <h1>{error.message}</h1>}
-        {data && data.length > 0 && (
+        {data &&
+          data.length > 0 &&
           data.map((datum) => {
             const { title, _id, description, tags } = datum;
             return (
@@ -46,9 +47,7 @@ const Home = () => {
                 {/* <p>created by: {datum.createdBy.name} </p> */}
               </div>
             );
-          })
-        )}
-       
+          })}
       </div>
     </div>
       <div>

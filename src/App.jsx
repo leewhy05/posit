@@ -12,6 +12,7 @@ import CreateStory from './pages/CreateStory'
 import EditStory from './pages/EditStory'
 import  { Toaster } from 'react-hot-toast';
 import MapHero from './component/MapHero'
+import SingleStory from './pages/SingleStory'
 
 
 function App() {
@@ -30,6 +31,8 @@ function App() {
     <Route path='/CreateStory' element={<CreateStory/>}/>
     <Route path='/EditStory' element={<EditStory/>}/>
     <Route path='/MapHero/:userId' element={<MapHero/>}/>
+    {/* <Route path='/storydetail/:Id' element={< SingleStory/>}/> */}
+
  
 
 </Route>
