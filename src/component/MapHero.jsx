@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const MapHero = () => {
   const [data, setData] = useState([]);
@@ -48,7 +48,8 @@ const MapHero = () => {
           data.map((datum) => {
             const { title, _id, description, tags } = datum;
             return (
-              <div key={_id} className="border col-md-5 p-3">
+              <Link to={`/SingleStory`} className="border col-md-5 p-3 text-decoration-none text-dark">
+              <div key={_id} >
                 <h2>
                   <span className="text-success fw-bold">title:</span> {title}
                 </h2>
@@ -58,6 +59,7 @@ const MapHero = () => {
                 <h2> {tags} </h2>
                 <p>created by: {datum.createdBy.name} </p>
               </div>
+              </Link>
             );
           })}
       </div>

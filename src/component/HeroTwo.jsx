@@ -12,7 +12,7 @@ const HeroTwo = () => {
     <p>Do you want to write or discover stories from writers on any topic?</p>
     <div className='d-flex align-items-center justify-content-center'>
     <input type="text"placeholder='Enter Email Address' className='border-6 rounded' />
-    <button className="btn btn" style={{ backgroundColor: "#0086B0" }}>
+    <button className="" style={{ backgroundColor: "#0086B0" }}>
                     <Link
                       to="/SignUp"
                       className="text-decoration-none text-light"

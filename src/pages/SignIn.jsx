@@ -54,7 +54,7 @@ const SignIn = () => {
   }
   return (
     <div className="pt-5 body">
-      <div className="container w-50">
+      <div className="container">
       <div className="text-center pt-5">
         <h1 className="text-center">Welcome Back</h1>
       </div>

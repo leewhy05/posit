@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import Hero from '../component/Hero'
 import HeroTwo from '../component/HeroTwo'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -10,6 +11,7 @@ const Home = () => {
       const fetcher = await fetch("https://posit-ptta.onrender.com/api/allposts");
       const res = await fetcher.json();
       console.log(res.allPosts);
+      console.log(res.allPosts[0].createdBy.name);
       setData(res.allPosts);
     } catch (error) {
       if (error) {
@@ -17,6 +19,7 @@ const Home = () => {
         console.log(error);
       }
     }
+
   };
 
   useEffect(() => {
@@ -35,17 +38,19 @@ const Home = () => {
           data.map((datum) => {
             const { title, _id, description, tags } = datum;
             return (
-              <div key={_id} className="border col-md-5 p-3">
+             <Link className="border col-md-5 p- text-dark text-decoration-none">
+              <div key={_id} >
                 {/* <img src={displayPic} alt="" className="img-fluid" /> */}
                 <h2>
-                  <span className="text-success fw-bold">title:</span> {title}
+                  <span className="text-success fw-bold">TITLE:</span> {title}
                 </h2>
                 <h4>
-                  <span>story:</span> {description}
+                  <span>STORY:</span> {description}
                 </h4>
-                <h2> {tags} </h2>
+                <h2><span>TAG:</span> {tags} </h2>
                 {/* <p>created by: {datum.createdBy.name} </p> */}
               </div>
+             </Link>
             );
           })}
       </div>
@@ -54,6 +59,7 @@ const Home = () => {
       <HeroTwo/>
       </div>
     </div>
+   
   )
 }
 
